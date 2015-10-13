@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>coTrainer</title>
+    </head>
+    <body>
+        <div id="coTrainerApp" class="container-fluid">
+
+            <div ng-view></div>
+            <!--<div ng-controller="Zeitnahme as vm">-->
+                <!--{{vm.klappt}} jau?-->
+                <!--<h1>Bootstrap ist da!</h1>-->
+            <!--</div>-->
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/ext/angular.min.js"></script>
+        <script type="text/javascript" src="js/ext/angular-route.min.js"></script>
+        <script type="text/javascript" src="js/ext/angular-animate.min.js"></script>
+        <script type="text/javascript" src="js/ext/angular-local-storage.min.js"></script>
+        <script type="text/javascript" src="js/ext/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="js/modules/training/training.js"></script>
+        <script type="text/javascript" src="js/modules/training/TrainingController.js"></script>
+        <script type="text/javascript" src="js/modules/training/ZeitanzeigeDirective.js"></script>
+        <script type="text/javascript" src="js/modules/daten/daten.js"></script>
+        <script type="text/javascript" src="js/modules/daten/SportlerService.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<h1>Training</h1>
+
+<ul class="list-group">
+    <li class="list-group-item" ng-class="{'list-group-item-info': vm.unterwegs(sportler)}" ng-repeat="sportler in vm.aktiveSportler">
+        {{sportler.name}}
+        <button ng-show="vm.hatPause(sportler)" class="btn btn-primary pull-right" ng-click="vm.starteLauf(sportler)">
+            <i class="mdi mdi-play-circle"></i>
+        </button>
+        <span ng-show="vm.imZiel(sportler)" class="pull-right">
+            {{vm.laufZeitString(sportler)}}
+            <button class="btn btn-default" ng-click="vm.loescheLauf(sportler)">
+                <i class="mdi mdi-delete"></i>
+            </button>
+        </span>
+        <span ng-show="vm.unterwegs(sportler)" class="pull-right">
+            <strong style="font-size: large"><zeit-anzeige sportler="{{sportler}}"></zeit-anzeige></strong>
+            <button class="btn btn-primary" ng-click="vm.beendeLauf(sportler)">
+                <i class="mdi mdi-flag-checkered"></i>
+            </button>
+        </span>
+    </li>
+</ul>

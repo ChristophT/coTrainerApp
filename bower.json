@@ -1,0 +1,27 @@
+{
+  "name": "coTrainerApp",
+  "version": "0.0.1",
+  "authors": [
+    "ChristophT <thelen.christoph@gmail.com>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-animate": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "bootstrap": "~3.3.5",
+    "moment": "~2.10.6",
+    "angular-local-storage": "~0.2.3",
+    "mdi": "~1.2.65"
+  }
+}
