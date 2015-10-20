@@ -27,6 +27,7 @@ body {
     height:100%;
     width:100%;
     font-size: 25px;
+    background-color: #eed;
 }
 
 
@@ -42,6 +43,21 @@ body {
 .list-group-item {
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.nav-pills {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.nav-pills a {
+    font-size: 20px;
+    margin-top: 6px;
+}
+
+.nav-pills .active a {
+    font-size: 25px;
+    margin-top: 0;
 }
 
 .mdi::before {
