@@ -1,7 +1,7 @@
 <h1>Training</h1>
 
 <ul class="list-group">
-    <li class="list-group-item" ng-class="{'list-group-item-info': vm.unterwegs(sportler)}" ng-repeat="sportler in vm.aktiveSportler">
+    <li class="list-group-item" ng-class="{'list-group-item-success': vm.unterwegs(sportler)}" ng-repeat="sportler in vm.aktiveSportler">
         {{sportler.name}}
         <button ng-show="vm.hatPause(sportler)" class="btn btn-primary pull-right" ng-click="vm.starteLauf(sportler)">
             <i class="mdi mdi-play-circle"></i>
