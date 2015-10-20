@@ -48,6 +48,7 @@ body {
 .nav-pills {
     margin-top: 5px;
     margin-bottom: 5px;
+    min-height: 66px;
 }
 
 .nav-pills a {

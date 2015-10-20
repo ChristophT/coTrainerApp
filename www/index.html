@@ -22,10 +22,12 @@
     </head>
     <body>
         <div id="coTrainerApp" class="container-fluid">
-            <ul class="nav nav-pills">
-                <li class="active"><a href="#/training">Training</a></li>
-                <li><a href="#/sportler">Sportler</a></li>
-            </ul>
+            <div ng-controller="NavController as vm">
+                <ul class="nav nav-pills">
+                    <li ng-class="{'active' : vm.isActive('training')}"><a href="#/training">Training</a></li>
+                    <li ng-class="{'active' : vm.isActive('sportler')}"><a href="#/sportler">Sportler</a></li>
+                </ul>
+            </div>
             <div ng-view></div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
@@ -39,6 +41,8 @@
         <script type="text/javascript" src="js/modules/training/ZeitanzeigeDirective.js"></script>
         <script type="text/javascript" src="js/modules/daten/daten.js"></script>
         <script type="text/javascript" src="js/modules/daten/SportlerService.js"></script>
+        <script type="text/javascript" src="js/modules/sportlerListe/sportlerListe.js"></script>
+        <script type="text/javascript" src="js/modules/sportlerListe/SportlerListeController.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
