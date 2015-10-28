@@ -6,7 +6,11 @@ coTrainerApp.controller('NavController', function ($route) {
     var vm=this;
 
     vm.isActive = function (route) {
-        return $route.current.$$route.originalPath.indexOf(route) >= 0;
+        var active = false;
+        if ($route.current) {
+            active = $route.current.$$route.originalPath.indexOf(route) >= 0;
+        }
+        return active
     };
 });
 
