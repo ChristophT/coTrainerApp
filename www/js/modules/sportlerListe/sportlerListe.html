@@ -1,2 +1,6 @@
-<h1>sportlerListe</h1>
-{{vm.test}}
+<ul class="list-group">
+    <li ng-repeat="sportler in vm.sportler" class="list-group-item">
+        {{sportler.name}}
+    </li>
+</ul>
+<button ng-click="" class="fab btn btn-default">+</button>
