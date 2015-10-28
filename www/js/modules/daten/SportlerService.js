@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('daten').factory('SportlerService', function (localStorageService) {
-    var aktiveSportler = [{name: 'Christoph'}, {name: 'Richie'}];
+    var sportlerListe, aktiveSportlerListe = [{name: 'Christoph'}, {name: 'Richie'}];
 
     function starteLauf(sportler) {
         sportler.startZeit = moment();
@@ -20,14 +20,30 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         speichereSportlerDaten();
     }
 
+    function addSportler(name) {
+        sportlerListe.push({'name': name});
+        speichereSportlerDaten();
+    }
+
+    function deleteSportler(sportler) {
+        sportlerListe.remove(sportler);
+        aktiveSportlerListe.remove(sportler);
+        speichereSportlerDaten();
+    }
+
     function speichereSportlerDaten() {
-        localStorageService.set('sportler', aktiveSportler);
+        localStorageService.set('aktiveSportler', aktiveSportlerListe);
+        localStorageService.set('sportler', sportlerListe);
     }
 
     function ladeSportlerDaten() {
         var elementeAusLS = localStorageService.get('sportler');
         if (elementeAusLS) {
-            aktiveSportler = elementeAusLS;
+            sportlerListe = elementeAusLS;
+        }
+        elementeAusLS = localStorageService.get('aktiveSportler');
+        if (elementeAusLS) {
+            aktiveSportlerListe = elementeAusLS;
         }
     }
 
@@ -35,8 +51,13 @@ angular.module('daten').factory('SportlerService', function (localStorageService
 
     return {
         get aktiveSportler() {
-            return aktiveSportler;
+            return aktiveSportlerListe;
         },
+        get sportler() {
+            return sportlerListe;
+        },
+        addSportler: addSportler,
+        deleteSportler: deleteSportler,
         starteLauf: starteLauf,
         beendeLauf: beendeLauf,
         loescheLauf: loescheLauf,
