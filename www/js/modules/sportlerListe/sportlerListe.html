@@ -3,4 +3,8 @@
         {{sportler.name}}
     </li>
 </ul>
-<button ng-click="" class="fab btn btn-default">+</button>
+<button ng-click="vm.openAddDialog()" class="fab btn btn-default"> <i class="mdi mdi-account-plus"></i></button>
+<div class="new-person" ng-show="vm.showAddSportler">
+    <input type="text" ng-model="vm.neuerSportler" class="form-control">
+    <button class="btn"> <i class="mdi mdi-check"></i></button>
+</div>
