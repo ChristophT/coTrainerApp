@@ -11,3 +11,18 @@ sportlerListe.config(function ($routeProvider) {
             controller: 'SportlerListeController as vm'
         });
 });
+
+sportlerListe.directive('focusOn',function() {
+    return {
+        restrict : 'A',
+        link : function($scope,$element,$attr) {
+            $scope.$watch($attr.focusOn,function(focusVal) {
+                if(focusVal === true) {
+                    setTimeout(function() {
+                        $element.focus();
+                    },50);
+                }
+            });
+        }
+    }
+});

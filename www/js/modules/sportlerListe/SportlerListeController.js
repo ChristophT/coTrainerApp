@@ -3,10 +3,13 @@
 angular.module('sportlerListe').controller('SportlerListeController', function (SportlerService) {
     var vm = this;
 
-    vm.sportler = SportlerService.aktiveSportler;
+    vm.neuerSportler = '';
 
-    vm.addSportler = function (name) {
-        SportlerService.addSportler(name);
+    vm.sportler = SportlerService.sportler;
+
+    vm.addSportler = function () {
+        SportlerService.addSportler(vm.neuerSportler);
+        vm.closeAddDialog();
     };
 
     vm.deleteSportler = function (sportler) {
@@ -16,8 +19,9 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
     vm.showAddSportler = false;
 
     vm.openAddDialog = function() {
+        vm.neuerSportler = '';
         vm.showAddSportler = true;
-    }
+    };
 
     vm.closeAddDialog = function() {
         vm.showAddSportler = false;

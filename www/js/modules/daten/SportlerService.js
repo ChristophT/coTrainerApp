@@ -21,8 +21,10 @@ angular.module('daten').factory('SportlerService', function (localStorageService
     }
 
     function addSportler(name) {
-        sportlerListe.push({'name': name});
-        speichereSportlerDaten();
+        if (name && name.trim().length > 0) {
+            sportlerListe.push({'name': name});
+            speichereSportlerDaten();
+        }
     }
 
     function deleteSportler(sportler) {

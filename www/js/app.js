@@ -1,6 +1,6 @@
 'use strict';
 
-var coTrainerApp = angular.module('coTrainerApp', ['training', 'sportlerListe', 'ngRoute']);
+var coTrainerApp = angular.module('coTrainerApp', ['training', 'sportlerListe', 'ngRoute', 'ngAnimate']);
 
 coTrainerApp.controller('NavController', function ($route) {
     var vm=this;

@@ -78,15 +78,27 @@ body {
 
 .new-person {
     background-color: white;
-    padding: 11px;
     border: 1px solid #f00;
-    border-radius: 42px;
+    border-radius: 42px 0 0 42px;
     position: fixed;
-    bottom: 34px;
-    width: 74px;
-    right: 35px;
+    bottom: 37px;
+    width: 70%;
+    right: 69px;
+    padding: 11px 40px 11px 11px;
 }
 
+.new-person input.form-control {
+    font-size: 25px;
+}
+
+.new-person.ng-hide-add, .new-person.ng-hide-remove {
+    transition: all linear 0.5s;
+}
+
+.new-person.ng-hide {
+    width: 0;
+    padding: 0;
+}
 
 .mdi::before {
     font-size: 30px;
