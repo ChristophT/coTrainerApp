@@ -17,3 +17,15 @@ coTrainerApp.controller('NavController', function ($route) {
 coTrainerApp.config(function($routeProvider) {
     $routeProvider.otherwise('/training');
 });
+
+coTrainerApp.directive('preventDefault', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            });
+        }
+    };
+});

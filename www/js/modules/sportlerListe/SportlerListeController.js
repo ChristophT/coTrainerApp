@@ -25,5 +25,10 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
 
     vm.closeAddDialog = function() {
         vm.showAddSportler = false;
-    }
+    };
+
+    vm.preventDefault = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    };
 });
