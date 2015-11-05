@@ -71,6 +71,20 @@ body {
     border-radius: 50%;
     padding: 20px;
 }
+
+.fab.fab2 {
+    right: 120px;
+}
+
+.fab.ng-hide-add, .fab.ng-hide-remove {
+    transition: all ease-out 0.5s;
+}
+
+.fab.ng-hide {
+    transform: translateY(150px);
+}
+
+
 .btn-default.fab:hover {
     background-color: #C30000;
     color: white;
@@ -92,7 +106,7 @@ body {
 }
 
 .new-person.ng-hide-add, .new-person.ng-hide-remove {
-    transition: all linear 0.5s;
+    transition: all ease-in-out 0.5s;
 }
 
 .new-person.ng-hide {

@@ -27,6 +27,13 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         }
     }
 
+    function activateSportler(sportler) {
+        if (aktiveSportlerListe.indexOf(sportler) < 0) {
+            aktiveSportlerListe.push(sportler);
+            speichereSportlerDaten();
+        }
+    }
+
     function deleteSportler(sportler) {
         sportlerListe.remove(sportler);
         aktiveSportlerListe.remove(sportler);
@@ -59,6 +66,7 @@ angular.module('daten').factory('SportlerService', function (localStorageService
             return sportlerListe;
         },
         addSportler: addSportler,
+        activateSportler: activateSportler,
         deleteSportler: deleteSportler,
         starteLauf: starteLauf,
         beendeLauf: beendeLauf,

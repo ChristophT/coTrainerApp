@@ -31,4 +31,18 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
         event.preventDefault();
         event.stopPropagation();
     };
+
+    vm.showActions = function () {
+        return vm.sportler.some(function (sportler) {
+            return sportler.selected;
+        })
+    };
+
+    vm.activateSportler = function () {
+        vm.sportler.forEach(function (sportler) {
+            if (sportler.selected) {
+                SportlerService.activateSportler(sportler);
+            }
+        })
+    }
 });
