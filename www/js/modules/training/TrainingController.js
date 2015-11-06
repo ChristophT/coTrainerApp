@@ -1,9 +1,13 @@
 'use strict';
 
-angular.module('training').controller('TrainingController', function (SportlerService) {
+angular.module('training').controller('TrainingController', function (SportlerService, $location) {
     var vm=this;
 
-    vm.aktiveSportler = SportlerService.aktiveSportler;
+    function listeAktualisieren() {
+        vm.aktiveSportler = SportlerService.aktiveSportler;
+    }
+
+    listeAktualisieren();
 
     vm.hatPause = function (sportler) {
         return !sportler.startZeit && !sportler.letzterLauf;
@@ -34,4 +38,9 @@ angular.module('training').controller('TrainingController', function (SportlerSe
         return numValue < 10 ? '0' + numValue : numValue;
     }
 
+    vm.trainingBeenden = function () {
+        SportlerService.trainingBeenden();
+        listeAktualisieren();
+        $location.path('/sportler');
+    }
 });

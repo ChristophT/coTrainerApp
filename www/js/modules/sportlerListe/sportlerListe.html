@@ -1,5 +1,5 @@
 <ul class="list-group" style="margin-bottom: 120px;">
-    <li ng-repeat="sportler in vm.sportler" class="list-group-item">
+    <li ng-repeat="sportler in vm.sportler" class="list-group-item" ng-class="{'list-group-item-success' : sportler.aktiv}">
         <div class="checkbox pull-right">
             <label>
                 <input type="checkbox" ng-model="sportler.selected">

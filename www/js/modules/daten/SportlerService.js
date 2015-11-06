@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('daten').factory('SportlerService', function (localStorageService) {
-    var sportlerListe, aktiveSportlerListe = [{name: 'Christoph'}, {name: 'Richie'}];
+    var sportlerListe;
 
     function starteLauf(sportler) {
         sportler.startZeit = moment();
@@ -20,6 +20,16 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         speichereSportlerDaten();
     }
 
+    function trainingBeenden() {
+        sportlerListe.forEach(function (sportler) {
+            if (sportler.aktiv) {
+                beendeLauf(sportler);
+                sportler.aktiv = false;
+            }
+        });
+        speichereSportlerDaten();
+    }
+
     function addSportler(name) {
         if (name && name.trim().length > 0) {
             sportlerListe.push({'name': name});
@@ -28,20 +38,16 @@ angular.module('daten').factory('SportlerService', function (localStorageService
     }
 
     function activateSportler(sportler) {
-        if (aktiveSportlerListe.indexOf(sportler) < 0) {
-            aktiveSportlerListe.push(sportler);
-            speichereSportlerDaten();
-        }
+        sportler.aktiv = true;
+        speichereSportlerDaten();
     }
 
     function deleteSportler(sportler) {
         sportlerListe.remove(sportler);
-        aktiveSportlerListe.remove(sportler);
         speichereSportlerDaten();
     }
 
     function speichereSportlerDaten() {
-        localStorageService.set('aktiveSportler', aktiveSportlerListe);
         localStorageService.set('sportler', sportlerListe);
     }
 
@@ -49,10 +55,8 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         var elementeAusLS = localStorageService.get('sportler');
         if (elementeAusLS) {
             sportlerListe = elementeAusLS;
-        }
-        elementeAusLS = localStorageService.get('aktiveSportler');
-        if (elementeAusLS) {
-            aktiveSportlerListe = elementeAusLS;
+        } else {
+            sportlerListe = [];
         }
     }
 
@@ -60,7 +64,9 @@ angular.module('daten').factory('SportlerService', function (localStorageService
 
     return {
         get aktiveSportler() {
-            return aktiveSportlerListe;
+            return sportlerListe.filter(function (sportler) {
+                return sportler.aktiv;
+            });
         },
         get sportler() {
             return sportlerListe;
@@ -71,6 +77,7 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         starteLauf: starteLauf,
         beendeLauf: beendeLauf,
         loescheLauf: loescheLauf,
+        trainingBeenden: trainingBeenden,
         speichereSportlerDaten: speichereSportlerDaten
     };
 });

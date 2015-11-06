@@ -33,7 +33,7 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
     };
 
     vm.showActions = function () {
-        return vm.sportler.some(function (sportler) {
+        return !vm.showAddSportler && vm.sportler && vm.sportler.some(function (sportler) {
             return sportler.selected;
         })
     };
@@ -41,8 +41,9 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
     vm.activateSportler = function () {
         vm.sportler.forEach(function (sportler) {
             if (sportler.selected) {
+                sportler.selected = false;
                 SportlerService.activateSportler(sportler);
             }
-        })
+        });
     }
 });
