@@ -76,6 +76,10 @@ body {
     right: 120px;
 }
 
+.fab.fab3 {
+    right: 205px;
+}
+
 .fab.ng-hide-add, .fab.ng-hide-remove {
     transition: all ease-out 0.5s;
 }
