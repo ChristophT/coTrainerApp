@@ -16,6 +16,10 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
         SportlerService.deleteSportler(sportler);
     };
 
+    vm.toggleSportlerSelected = function(sportler) {
+        sportler.selected = !sportler.selected;
+    };
+
     vm.showAddSportler = false;
 
     vm.openAddDialog = function() {
@@ -27,9 +31,9 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
         vm.showAddSportler = false;
     };
 
-    vm.preventDefault = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
+    vm.preventDefault = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
     };
 
     vm.showActions = function () {

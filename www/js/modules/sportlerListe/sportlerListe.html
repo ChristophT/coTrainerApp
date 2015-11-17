@@ -1,8 +1,9 @@
 <ul class="list-group" style="margin-bottom: 120px;">
-    <li ng-repeat="sportler in vm.sportler" class="list-group-item" ng-class="{'list-group-item-success' : sportler.aktiv}">
+    <li ng-repeat="sportler in vm.sportler" class="list-group-item" ng-class="{'list-group-item-success' : sportler.aktiv}"
+    ng-click="vm.toggleSportlerSelected(sportler, $event)">
         <div class="checkbox pull-right">
             <label>
-                <input type="checkbox" ng-model="sportler.selected">
+                <input type="checkbox" ng-model="sportler.selected" ng-click="$event.stopPropagation()">
             </label>
         </div>
         {{sportler.name}}
