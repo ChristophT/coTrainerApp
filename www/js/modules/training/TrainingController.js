@@ -1,7 +1,15 @@
 'use strict';
 
-angular.module('training').controller('TrainingController', function (SportlerService, $location) {
+angular.module('training').controller('TrainingController', function (SportlerService, $location, $route) {
     var vm=this;
+
+    if ($route.current.$$route.firstCall) {
+        if (!SportlerService.hasAktiveSportler()) {
+            goToSportlerListe();
+        } else {
+            $location.path('/training');
+        }
+    }
 
     function listeAktualisieren() {
         vm.aktiveSportler = SportlerService.aktiveSportler;
@@ -38,9 +46,13 @@ angular.module('training').controller('TrainingController', function (SportlerSe
         return numValue < 10 ? '0' + numValue : numValue;
     }
 
+    function goToSportlerListe() {
+        $location.path('/sportler');
+    }
+
     vm.trainingBeenden = function () {
         SportlerService.trainingBeenden();
         listeAktualisieren();
-        $location.path('/sportler');
+        goToSportlerListe();
     }
 });

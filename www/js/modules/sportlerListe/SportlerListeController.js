@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sportlerListe').controller('SportlerListeController', function (SportlerService) {
+angular.module('sportlerListe').controller('SportlerListeController', function (SportlerService, $location) {
     var vm = this;
 
     vm.neuerSportler = '';
@@ -54,5 +54,13 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
                 SportlerService.activateSportler(sportler);
             }
         });
+        if (SportlerService.hasAktiveSportler()) {
+            goToTraining();
+        }
+    };
+
+    function goToTraining() {
+        $location.path('/training');
     }
+
 });

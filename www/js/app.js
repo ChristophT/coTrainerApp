@@ -7,7 +7,7 @@ coTrainerApp.controller('NavController', function ($route) {
 
     vm.isActive = function (route) {
         var active = false;
-        if ($route.current) {
+        if ($route.current && $route.current.$$route) {
             active = $route.current.$$route.originalPath.indexOf(route) >= 0;
         }
         return active
@@ -15,7 +15,9 @@ coTrainerApp.controller('NavController', function ($route) {
 });
 
 coTrainerApp.config(function($routeProvider) {
-    $routeProvider.otherwise('/training');
+    $routeProvider.otherwise({
+        redirectTo: '/start'
+    });
 });
 
 coTrainerApp.directive('preventDefault', function () {

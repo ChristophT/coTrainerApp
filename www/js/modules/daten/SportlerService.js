@@ -60,6 +60,10 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         }
     }
 
+    function hasAktiveSportler() {
+        return this.aktiveSportler && this.aktiveSportler.length > 0;
+    }
+
     ladeSportlerDaten();
 
     return {
@@ -78,6 +82,7 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         beendeLauf: beendeLauf,
         loescheLauf: loescheLauf,
         trainingBeenden: trainingBeenden,
-        speichereSportlerDaten: speichereSportlerDaten
+        speichereSportlerDaten: speichereSportlerDaten,
+        hasAktiveSportler: hasAktiveSportler
     };
 });
