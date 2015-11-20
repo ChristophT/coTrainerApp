@@ -1,0 +1,24 @@
+.view-animate {
+    width: 100%;
+    height: 100%;
+
+}
+
+.view-animate.ng-enter, .view-animate.ng-leave {
+    transition: all ease-in-out 2.8s;
+
+    padding: 0 15px;
+    position:absolute;
+
+    left:0;
+}
+
+.view-animate.ng-enter {
+    transform: translateX(100%);
+}
+.view-animate.ng-enter.ng-enter-active {
+    transform: translateX(0);
+}
+.view-animate.ng-leave.ng-leave-active {
+    transform: translateX(-100%);
+}

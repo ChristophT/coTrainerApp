@@ -8,7 +8,8 @@ training.config(function ($routeProvider) {
     $routeProvider
         .when('/training/', {
             templateUrl: 'js/modules/training/training.html',
-            controller: 'TrainingController as vm'
+            controller: 'TrainingController as vm',
+            animation: 'rightToLeft'
         });
     $routeProvider
         .when('/start/', {

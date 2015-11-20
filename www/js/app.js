@@ -1,6 +1,6 @@
 'use strict';
 
-var coTrainerApp = angular.module('coTrainerApp', ['training', 'sportlerListe', 'ngRoute', 'ngAnimate']);
+var coTrainerApp = angular.module('coTrainerApp', ['training', 'sportlerListe', 'ngRoute', 'ngAnimate', 'direktiven']);
 
 coTrainerApp.controller('NavController', function ($route) {
     var vm=this;
@@ -18,16 +18,4 @@ coTrainerApp.config(function($routeProvider) {
     $routeProvider.otherwise({
         redirectTo: '/start'
     });
-});
-
-coTrainerApp.directive('preventDefault', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            element.bind('click', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            });
-        }
-    };
 });
