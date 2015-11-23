@@ -13,12 +13,15 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
     };
 
     vm.deleteSportler = function () {
+        var zuLoeschendeSportler = [];
         vm.sportler.forEach(function (sportler) {
             if (sportler.selected) {
-                sportler.selected = false;
-                SportlerService.deleteSportler(sportler);
+                zuLoeschendeSportler.push(sportler);
             }
         });
+        zuLoeschendeSportler.forEach(function (loeschKandidat) {
+            SportlerService.deleteSportler(loeschKandidat);
+        })
     };
 
     vm.toggleSportlerSelected = function(sportler) {
