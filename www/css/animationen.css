@@ -5,20 +5,35 @@
 }
 
 .view-animate.ng-enter, .view-animate.ng-leave {
-    transition: all ease-in-out 2.8s;
+    transition: all ease-in-out .4s;
+    transform: translateX(0);
 
     padding: 0 15px;
     position:absolute;
 
+    height: inherit;
     left:0;
+    bottom: 0;
+    top: 75px;
 }
 
-.view-animate.ng-enter {
+.leftToRight .view-animate.ng-enter {
     transform: translateX(100%);
+
 }
-.view-animate.ng-enter.ng-enter-active {
+.leftToRight .view-animate.ng-enter.ng-enter-active {
     transform: translateX(0);
 }
-.view-animate.ng-leave.ng-leave-active {
+.leftToRight .view-animate.ng-leave.ng-leave-active {
     transform: translateX(-100%);
+}
+
+.rightToLeft .view-animate.ng-enter {
+    transform: translateX(-100%);
+}
+.rightToLeft .view-animate.ng-enter.ng-enter-active {
+    transform: translateX(0);
+}
+.rightToLeft .view-animate.ng-leave.ng-leave-active {
+    transform: translateX(100%);
 }
