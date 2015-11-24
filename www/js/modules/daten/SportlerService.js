@@ -2,6 +2,7 @@
 
 angular.module('daten').factory('SportlerService', function (localStorageService) {
     var sportlerListe;
+    var undoInfo = {aktion: null};
 
     function starteLauf(sportler) {
         sportler.startZeit = moment();
@@ -64,6 +65,28 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         return this.aktiveSportler && this.aktiveSportler.length > 0;
     }
 
+    function setUndoInfo(aktion, betroffeneSportler) {
+        undoInfo.aktion = aktion;
+        undoInfo.betroffeneSportler = betroffeneSportler;
+    }
+
+    function clearUndoInfo() {
+        setUndoInfo(null, null);
+    }
+
+    function isUndoAktionVorhanden() {
+        return undoInfo.aktion != null;
+    }
+
+    function doUndo() {
+        if (undoInfo.aktion === 'delete') {
+            undoInfo.betroffeneSportler.forEach(function (sportler) {
+                sportlerListe.push(sportler);
+            })
+        }
+        clearUndoInfo();
+    }
+
     ladeSportlerDaten();
 
     return {
@@ -83,6 +106,10 @@ angular.module('daten').factory('SportlerService', function (localStorageService
         loescheLauf: loescheLauf,
         trainingBeenden: trainingBeenden,
         speichereSportlerDaten: speichereSportlerDaten,
-        hasAktiveSportler: hasAktiveSportler
+        hasAktiveSportler: hasAktiveSportler,
+        setUndoInfo: setUndoInfo,
+        isUndoAktionVorhanden: isUndoAktionVorhanden,
+        doUndo: doUndo,
+        clearUndoInfo: clearUndoInfo
     };
 });

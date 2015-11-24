@@ -21,16 +21,22 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
         });
         zuLoeschendeSportler.forEach(function (loeschKandidat) {
             SportlerService.deleteSportler(loeschKandidat);
-        })
+        });
+
+        SportlerService.setUndoInfo('delete', zuLoeschendeSportler);
     };
 
     vm.toggleSportlerSelected = function(sportler) {
+        SportlerService.clearUndoInfo();
+
         sportler.selected = !sportler.selected;
     };
 
     vm.showAddSportler = false;
 
     vm.openAddDialog = function() {
+        SportlerService.clearUndoInfo();
+
         vm.neuerSportler = '';
         vm.showAddSportler = true;
     };
@@ -51,6 +57,8 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
     };
 
     vm.activateSportler = function () {
+        SportlerService.clearUndoInfo();
+
         vm.sportler.forEach(function (sportler) {
             if (sportler.selected) {
                 sportler.selected = false;
@@ -62,8 +70,13 @@ angular.module('sportlerListe').controller('SportlerListeController', function (
         }
     };
 
+    vm.isUndoAktionVorhanden = SportlerService.isUndoAktionVorhanden;
+
+    vm.doUndo = SportlerService.doUndo;
+
     function goToTraining() {
         $location.path('/training');
     }
 
+    SportlerService.clearUndoInfo();
 });

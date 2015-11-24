@@ -17,4 +17,5 @@
     </div>
 </div>
 <button ng-click="vm.activateSportler()" class="fab fab2 btn btn-default" ng-show="vm.showActions()"><i class="mdi mdi-timer"></i></button>
-<button ng-click="vm.deleteSportler()" class="fab fab3 btn btn-default" ng-show="vm.showActions()"><i class="mdi mdi-delete"></i></button>
+<button ng-click="vm.deleteSportler()" class="fab fab-danger btn btn-default" ng-show="vm.showActions()"><i class="mdi mdi-delete"></i></button>
+<button ng-click="vm.doUndo()" class="fab fab-undo btn btn-default" ng-show="vm.isUndoAktionVorhanden()"><i class="mdi mdi-undo"></i></button>

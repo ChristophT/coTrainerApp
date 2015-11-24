@@ -54,5 +54,7 @@ angular.module('training').controller('TrainingController', function (SportlerSe
         SportlerService.trainingBeenden();
         listeAktualisieren();
         goToSportlerListe();
-    }
+    };
+
+    SportlerService.clearUndoInfo();
 });
